@@ -52,7 +52,7 @@ Copiá `.env.example` a `.env.local` y ajustá los valores:
 
 | Variable | Descripción | Default |
 | --- | --- | --- |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número de WhatsApp del negocio (formato internacional, sin signos) usado en el botón flotante, la consulta de producto y el checkout del carrito. | `5493471672399` |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número de WhatsApp del negocio (formato internacional, sin signos) usado en el botón flotante, la consulta de producto y el checkout del carrito. | `5493471681570` |
 | `NEXT_PUBLIC_SITE_URL` | URL pública del sitio, usada en metadata, `sitemap.xml` y `robots.txt`. | `https://facheros-tienda.vercel.app` |
 
 Ninguna variable es obligatoria para correr la demo: ambas tienen un valor por
