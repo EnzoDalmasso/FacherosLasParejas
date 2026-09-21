@@ -14,7 +14,7 @@ export function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover opacity-90"
+        className="object-cover object-top opacity-90"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-negro via-negro/40 to-negro/10" />
 
