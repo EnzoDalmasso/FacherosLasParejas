@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getProductos } from "@/data/productos";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://facheros-tienda.vercel.app";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://facheros-tienda.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const rutasEstaticas = ["", "/tienda", "/categorias", "/nosotros", "/contacto"].map(

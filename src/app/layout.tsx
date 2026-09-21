@@ -21,7 +21,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://facheros-tienda.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://facheros-tienda.vercel.app"
   ),
   title: {
     default: `${configuracionTienda.nombreCompleto} — Indumentaria urbana`,
