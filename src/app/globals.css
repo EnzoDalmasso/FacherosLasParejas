@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --color-negro: #121110;
+  --color-crema: #f6f3ec;
+  --color-blanco: #ffffff;
+  --color-acento: #c1502e;
+  --color-acento-hover: #a03f22;
+  --color-gris: #6f6d66;
+  --color-gris-claro: #a9a69c;
+  --color-borde: #e3ddd0;
+}
+
+@theme inline {
+  --color-negro: var(--color-negro);
+  --color-crema: var(--color-crema);
+  --color-blanco: var(--color-blanco);
+  --color-acento: var(--color-acento);
+  --color-acento-hover: var(--color-acento-hover);
+  --color-gris: var(--color-gris);
+  --color-gris-claro: var(--color-gris-claro);
+  --color-borde: var(--color-borde);
+
+  --font-display: var(--font-anton);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--color-crema);
+  color: var(--color-negro);
+}
+
+/* Scrollbar sutil, consistente con la estética minimal */
+::selection {
+  background: var(--color-negro);
+  color: var(--color-crema);
+}
+
+.animar-en-vista {
+  animation: aparecer 0.5s ease-out both;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
