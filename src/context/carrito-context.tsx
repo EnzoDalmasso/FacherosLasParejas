@@ -6,7 +6,6 @@ import {
   useEffect,
   useMemo,
   useReducer,
-  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -28,21 +27,35 @@ type Accion =
   | { tipo: "actualizarCantidad"; clave: string; cantidad: number }
   | { tipo: "vaciar" };
 
-function reducer(state: ItemCarrito[], accion: Accion): ItemCarrito[] {
+// `hidratado` viaja junto con los items para que el guardado espere al render que
+// ya tiene lo leído del storage y no lo pise con el [] inicial.
+interface EstadoCarrito {
+  items: ItemCarrito[];
+  hidratado: boolean;
+}
+
+function reducerItems(items: ItemCarrito[], accion: Accion): ItemCarrito[] {
   switch (accion.tipo) {
     case "hidratar":
       return accion.items;
     case "agregar":
-      return agregarItem(state, accion.item);
+      return agregarItem(items, accion.item);
     case "quitar":
-      return quitarItem(state, accion.clave);
+      return quitarItem(items, accion.clave);
     case "actualizarCantidad":
-      return actualizarCantidad(state, accion.clave, accion.cantidad);
+      return actualizarCantidad(items, accion.clave, accion.cantidad);
     case "vaciar":
       return [];
     default:
-      return state;
+      return items;
   }
+}
+
+function reducer(state: EstadoCarrito, accion: Accion): EstadoCarrito {
+  return {
+    items: reducerItems(state.items, accion),
+    hidratado: state.hidratado || accion.tipo === "hidratar",
+  };
 }
 
 interface CarritoContextValor {
@@ -61,19 +74,20 @@ interface CarritoContextValor {
 const CarritoContext = createContext<CarritoContextValor | null>(null);
 
 export function CarritoProvider({ children }: { children: ReactNode }) {
-  const [items, dispatch] = useReducer(reducer, []);
+  const [{ items, hidratado }, dispatch] = useReducer(reducer, {
+    items: [],
+    hidratado: false,
+  });
   const [estaAbierto, setEstaAbierto] = useState(false);
-  const hidratado = useRef(false);
 
   useEffect(() => {
     dispatch({ tipo: "hidratar", items: leerCarritoGuardado() });
-    hidratado.current = true;
   }, []);
 
   useEffect(() => {
-    if (!hidratado.current) return;
+    if (!hidratado) return;
     guardarCarrito(items);
-  }, [items]);
+  }, [items, hidratado]);
 
   const valor = useMemo<CarritoContextValor>(
     () => ({
