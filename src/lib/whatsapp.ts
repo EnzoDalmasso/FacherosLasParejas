@@ -9,8 +9,8 @@ function limpiarNumero(numero: string) {
 export function construirMensajePedido(items: ItemCarrito[], total: number) {
   const lineas = items.map((item) => {
     const detalles = [item.talle, item.color].filter(Boolean).join(" / ");
-    const sufijo = detalles ? ` — ${detalles}` : "";
-    return `- ${item.nombre}${sufijo} — x${item.cantidad}`;
+    const sufijo = detalles ? ` - ${detalles}` : "";
+    return `- ${item.nombre}${sufijo} - x${item.cantidad}`;
   });
 
   return [
