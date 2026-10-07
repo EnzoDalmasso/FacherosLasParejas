@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { FacebookIcon, InstagramIcon } from "@/components/ui/icons";
+import { InstagramIcon } from "@/components/ui/icons";
 import { configuracionTienda } from "@/config/tienda";
 import { categorias } from "@/data/categorias";
 
@@ -25,15 +25,6 @@ export function Footer() {
               className="flex h-10 w-10 items-center justify-center rounded-full border border-crema/20 transition-colors hover:bg-crema/10"
             >
               <InstagramIcon className="h-4 w-4" aria-hidden />
-            </a>
-            <a
-              href={configuracionTienda.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook de Facheros"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-crema/20 transition-colors hover:bg-crema/10"
-            >
-              <FacebookIcon className="h-4 w-4" aria-hidden />
             </a>
           </div>
         </div>

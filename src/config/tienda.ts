@@ -15,7 +15,6 @@ export const configuracionTienda = {
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5493471681570",
 
   instagram: "https://www.instagram.com/facheroslasparejas/",
-  facebook: "https://www.facebook.com/",
 
   direccion: "Av. 13 n° 669, Las Parejas, Santa Fe",
   telefono: "03471 68-1570",
